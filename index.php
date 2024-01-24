@@ -1,5 +1,4 @@
-<?php 
-include("confiq.php"); ?>
+<?php include("config.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,42 +17,58 @@ include("confiq.php"); ?>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <a class="nav-link active" aria-current="page" href="index.php">Home</a>
-        <a class="nav-link" href="from_daftar.php">Pendaftaran</a>
+        <a class="nav-link" href="form-daftar.php">Pendaftaran</a>
       </div>
     </div>
   </div>
 </nav>
     <div class="container mt-4">
-        <h2>Data Guru</h2><br>
-        <a class="btn btn-primary" href="from_daftar.php" role="button">Tambah Data</a>
+        <h2>Data Siswa</h2><br>
+        <a class="btn btn-primary" href="form-daftar.php" role="button">Tambah Data</a>
         <br><br>
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>Nama</th>
-                    <th>Jenis Kelamin</th>
+                    <th>Tanggal Lahir</th>
                     <th>Alamat</th>
+                    <th>Desa/Kelurahan</th>
+                    <th>Kecamatan</th>
+                    <th>Kabupaten/Kota</th>
+                    <th>Provinsi</th>
+                    <th>Kode Pos</th>
+                    <th>Jenis Kelamin</th>
+                    <th>Agama</th>
                     <th>No Telepon</th>
                     <th>Email</th>
+                    <th>Sekolah Asal</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                $sql = "SELECT * FROM guru01";
+                $sql = "SELECT * FROM pendaftaran";
                 $query = mysqli_query($db, $sql);
                 while($siswa = mysqli_fetch_array($query)) {
                     echo "<tr>";
-                    echo "<td>".$siswa['id_guru']."</td>";
-                    echo "<td>".$siswa['nama_guru']."</td>";
+                    echo "<td>".$siswa['id_pendaftaran']."</td>";
+                    echo "<td>".$siswa['nama']."</td>";
+                    echo "<td>".$siswa['tanggal_lahir']."</td>";
                     echo "<td>".$siswa['alamat']."</td>";
-                    echo "<td>".$siswa['jenis_kelamin']."</td>";    
-                    echo "<td>".$siswa['no_telepon']."</td>";
+                    echo "<td>".$siswa['desa']."</td>";
+                    echo "<td>".$siswa['kecamatan']."</td>";
+                    echo "<td>".$siswa['kota']."</td>";
+                    echo "<td>".$siswa['provinsi']."</td>";
+                    echo "<td>".$siswa['kode_pos']."</td>";
+                    echo "<td>".$siswa['jenis_kelamin']."</td>";
+                    echo "<td>".$siswa['agama']."</td>";
+                    echo "<td>".$siswa['no_tel']."</td>";
                     echo "<td>".$siswa['email']."</td>";
+                    echo "<td>".$siswa['sekolah_asal']."</td>";
                     echo "<td>
-                    <a href='index.php?edit=" . $siswa['id_guru'] . "' class='btn btn-warning'>Edit</a>
-                    <a href='index.php?delete=" . $siswa['id_guru'] . "' class='btn btn-danger'>Delete</a>
+                    <a href='index.php?edit=" . $siswa['id_pendaftaran'] . "' class='btn btn-warning'>Edit</a>
+                    <a href='index.php?delete=" . $siswa['id_pendaftaran'] . "' class='btn btn-danger'>Delete</a>
                           </td>";
                     echo "</tr>";
                 }
